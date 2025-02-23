@@ -8,6 +8,13 @@ watchlistContainer.addEventListener("click", removeFromWishlist)
 
 //This function render movies present in watchList array on My Watchlist page.
 function renderWatchlist(watchlist) {
+    watchlistContainer.innerHTML = `
+    <p class="empty-page-text">Your watchlist is looking a little empty...</p>
+    <a class="add-remove-btn" href="index.html">
+        <img class="add-icon"  src="/images/add-icon.svg">
+        Let’s add some movies!
+    </a>
+    `
     if (watchlist.length > 0) {
         watchlistContainer.innerHTML = ""
         const watchlistHtml = watchlist.map(movie => {
@@ -35,15 +42,7 @@ function renderWatchlist(watchlist) {
                 ` 
          }).join(" ")
          watchlistContainer.innerHTML = watchlistHtml
-    } else {
-        watchlistContainer.innerHTML = `
-        <p class="empty-page-text">Your watchlist is looking a little empty...</p>
-        <a class="add-remove-btn" href="index.html">
-            <img class="add-icon"  src="/images/add-icon.svg">
-            Let’s add some movies!
-        </a>
-        `
-    }
+    } 
 }
 
 //This function removes movie from watchList array and then save the latest array to localStorage.
@@ -57,7 +56,6 @@ function removeFromWishlist(event) {
         }
         localStorage.setItem("watchlist", JSON.stringify(watchlist))
         renderWatchlist(watchlist)
-        console.log(watchlist)
     }
 } 
 
