@@ -13,9 +13,11 @@ moviesContainer.addEventListener("click", addToWishlist)
 // of each movie contained in data.Search array.
 async function searchForMovies(event) {
     event.preventDefault()
+    moviesContainer.innerHTML = ""
     moviesList = []
     let searchInput = document.getElementById("search-input")
     const response = await fetch(`https://www.omdbapi.com/?apikey=56d65ca&s=${searchInput.value}`)
+    searchInput.value = ""
     const data = await response.json()
     if (data && Array.isArray(data.Search) && data.Search.length > 0) {
         for (let movie of data.Search) {
@@ -25,7 +27,6 @@ async function searchForMovies(event) {
         }
     } 
     renderMovies(moviesList)
-    searchInput.value = ""
 }
 
 //This function render movies present in movieList array on the Search for movies page.
