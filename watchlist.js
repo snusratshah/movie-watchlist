@@ -38,7 +38,7 @@ function renderWatchlist(watchlist) {
     } else {
         watchlistContainer.innerHTML = `
         <p class="empty-page-text">Your watchlist is looking a little empty...</p>
-        <a class="add-remove-btn" href="search-for-movies.html">
+        <a class="add-remove-btn" href="index.html">
             <img class="add-icon"  src="/images/add-icon.svg">
             Let’s add some movies!
         </a>
